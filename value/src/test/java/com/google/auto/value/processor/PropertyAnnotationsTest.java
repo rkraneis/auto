@@ -193,6 +193,22 @@ public class PropertyAnnotationsTest extends TestCase {
         "@javax.annotation.Nullable");
   }
 
+    public void testFindbugsAnnotation() {
+    assertGeneratedMatches(
+        ImmutableList.of("import edu.umd.cs.findbugs.annotations.Nullable;"),
+        ImmutableList.of("@Nullable"),
+        ImmutableList.of("@edu.umd.cs.findbugs.annotations.Nullable"),
+        "@edu.umd.cs.findbugs.annotations.Nullable");
+  }
+
+    public void testCheckerAnnotation() {
+    assertGeneratedMatches(
+        ImmutableList.of("import org.checkerframework.checker.nullness.qual.Nullable;"),
+        ImmutableList.of("@Nullable"),
+        ImmutableList.of("@org.checkerframework.checker.nullness.qual.Nullable"),
+        "@org.checkerframework.checker.nullness.qual.Nullable");
+  }
+
   public void testSingleStringValueAnnotation() {
     assertGeneratedMatches(
         ImmutableList.<String>of(),
